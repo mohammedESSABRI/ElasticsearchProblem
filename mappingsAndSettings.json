@@ -1,0 +1,489 @@
+{
+  "index_name_v5" : {
+    "aliases" : { },
+    "mappings" : {
+      "_default_" : {
+        "_all" : {
+          "enabled" : false
+        },
+        "properties" : { }
+      },
+      "decision" : {
+        "transform" : {
+          "script" : "['decision_content', 'TLE', 'ORD', 'RES', 'REM', 'CWD', 'HDN', 'KEY', 'HDW', 'FSU'].each { field -> ctx._source[field + '_' + ctx._source['lang']] = ctx._source[field] }",
+          "lang" : "groovy"
+        },
+        "dynamic_templates" : [ {
+          "de" : {
+            "mapping" : {
+              "analyzer" : "german",
+              "type" : "string"
+            },
+            "match" : "*_de",
+            "match_mapping_type" : "string"
+          }
+        }, {
+          "fr" : {
+            "mapping" : {
+              "analyzer" : "french",
+              "type" : "string"
+            },
+            "match" : "*_fr",
+            "match_mapping_type" : "string"
+          }
+        }, {
+          "en" : {
+            "mapping" : {
+              "analyzer" : "english",
+              "type" : "string"
+            },
+            "match" : "*_en",
+            "match_mapping_type" : "string"
+          }
+        } ],
+        "_all" : {
+          "enabled" : false
+        },
+        "_id" : {
+          "path" : "path"
+        },
+        "properties" : {
+          "APL" : {
+            "type" : "string"
+          },
+          "APN" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "ART" : {
+            "type" : "string"
+          },
+          "BOA" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "CSN" : {
+            "type" : "string",
+            "analyzer" : "case_insensitive_keyword"
+          },
+          "CWD" : {
+            "type" : "string"
+          },
+          "CWD_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "CWD_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "CWD_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "DAT" : {
+            "type" : "date",
+            "format" : "yyyyMMdd"
+          },
+          "DCI" : {
+            "type" : "string",
+            "analyzer" : "ipc_analyzer"
+          },
+          "DDO" : {
+            "type" : "date",
+            "format" : "yyyyMMdd"
+          },
+          "DIS" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "FSU" : {
+            "type" : "string"
+          },
+          "FSU_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "FSU_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "FSU_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "HDN" : {
+            "type" : "string"
+          },
+          "HDN_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "HDN_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "HDN_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "HDW" : {
+            "type" : "string"
+          },
+          "HDW_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "HDW_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "HDW_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "IPC" : {
+            "type" : "string",
+            "analyzer" : "ipc_analyzer"
+          },
+          "KEY" : {
+            "type" : "string"
+          },
+          "KEY_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "KEY_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "KEY_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "OFJ" : {
+            "type" : "string",
+            "analyzer" : "ofj_analyzer"
+          },
+          "OPP" : {
+            "type" : "string"
+          },
+          "ORD" : {
+            "type" : "string"
+          },
+          "ORD_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "ORD_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "ORD_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "PRL" : {
+            "type" : "string",
+            "analyzer" : "case_insensitive_keyword"
+          },
+          "REM" : {
+            "type" : "string"
+          },
+          "REM_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "REM_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "REM_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "RES" : {
+            "type" : "string"
+          },
+          "RES_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "RES_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "RES_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "TLE" : {
+            "type" : "string"
+          },
+          "TLE_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "TLE_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "TLE_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "applicantname" : {
+            "type" : "string"
+          },
+          "applicationno" : {
+            "type" : "string"
+          },
+          "archival" : {
+            "type" : "integer"
+          },
+          "art" : {
+            "type" : "string"
+          },
+          "board" : {
+            "type" : "string"
+          },
+          "case_number_keyword" : {
+            "type" : "string",
+            "analyzer" : "case_insensitive_keyword"
+          },
+          "case_number_structured" : {
+            "properties" : {
+              "csn1" : {
+                "type" : "string",
+                "analyzer" : "case_insensitive_keyword"
+              },
+              "csn2" : {
+                "type" : "integer"
+              },
+              "csn3" : {
+                "type" : "integer"
+              }
+            }
+          },
+          "casenumber" : {
+            "type" : "string"
+          },
+          "catchwords" : {
+            "type" : "string"
+          },
+          "citeddecisions" : {
+            "type" : "string"
+          },
+          "decision_content" : {
+            "type" : "string"
+          },
+          "decision_content_de" : {
+            "type" : "string",
+            "store" : true,
+            "analyzer" : "german",
+            "copy_to" : [ "main_search_field_de" ]
+          },
+          "decision_content_en" : {
+            "type" : "string",
+            "store" : true,
+            "analyzer" : "english",
+            "copy_to" : [ "main_search_field_en" ]
+          },
+          "decision_content_fr" : {
+            "type" : "string",
+            "store" : true,
+            "analyzer" : "french",
+            "copy_to" : [ "main_search_field_fr" ]
+          },
+          "decisiondate" : {
+            "type" : "string"
+          },
+          "dis" : {
+            "type" : "string"
+          },
+          "headnote" : {
+            "type" : "string"
+          },
+          "headword" : {
+            "type" : "string"
+          },
+          "highlight_decision_content" : {
+            "type" : "string"
+          },
+          "invention_title" : {
+            "type" : "string"
+          },
+          "ipcclass" : {
+            "type" : "string"
+          },
+          "keywords" : {
+            "type" : "string"
+          },
+          "lang" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "main_search_field_de" : {
+            "type" : "string",
+            "analyzer" : "german"
+          },
+          "main_search_field_en" : {
+            "type" : "string",
+            "analyzer" : "english"
+          },
+          "main_search_field_fr" : {
+            "type" : "string",
+            "analyzer" : "french"
+          },
+          "ofj" : {
+            "type" : "string"
+          },
+          "opponentname" : {
+            "type" : "string"
+          },
+          "order" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string",
+            "analyzer" : "file_path"
+          },
+          "proceedingslanguage" : {
+            "type" : "string"
+          },
+          "reasons" : {
+            "type" : "string"
+          },
+          "remark" : {
+            "type" : "string"
+          },
+          "size" : {
+            "type" : "integer"
+          },
+          "summary" : {
+            "type" : "string"
+          },
+          "test-field" : {
+            "type" : "integer"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "title_de" : {
+            "type" : "string",
+            "store" : true,
+            "analyzer" : "german",
+            "copy_to" : [ "main_search_field_de" ]
+          },
+          "title_en" : {
+            "type" : "string",
+            "store" : true,
+            "analyzer" : "english",
+            "copy_to" : [ "main_search_field_en" ]
+          },
+          "title_fr" : {
+            "type" : "string",
+            "store" : true,
+            "analyzer" : "french",
+            "copy_to" : [ "main_search_field_fr" ]
+          },
+          "type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          }
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "creation_date" : "1520438451067",
+        "uuid" : "ma2kjjv-ROu3usRLCL9KUA",
+        "number_of_replicas" : "1",
+        "analysis" : {
+          "filter" : {
+            "english_stop" : {
+              "type" : "stop",
+              "stopwords" : "_english_"
+            },
+            "english_possessive_stemmer" : {
+              "type" : "stemmer",
+              "language" : "possessive_english"
+            },
+            "french_elision" : {
+              "type" : "elision",
+              "articles" : [ "l", "m", "t", "qu", "n", "s", "j", "d", "c", "jusqu", "quoiqu", "lorsqu", "puisqu" ]
+            },
+            "german_stemmer" : {
+              "type" : "stemmer",
+              "language" : "light_german"
+            },
+            "english_stemmer" : {
+              "type" : "stemmer",
+              "language" : "english"
+            },
+            "german_stop" : {
+              "type" : "stop",
+              "stopwords" : "_german_"
+            },
+            "french_stemmer" : {
+              "type" : "stemmer",
+              "language" : "light_french"
+            },
+            "french_stop" : {
+              "type" : "stop",
+              "stopwords" : "_french_"
+            }
+          },
+          "analyzer" : {
+            "default" : {
+              "type" : "custom",
+              "filter" : [ "lowercase" ],
+              "tokenizer" : "standard"
+            },
+            "ipc_analyzer" : {
+              "filter" : [ "lowercase" ],
+              "tokenizer" : "whitespace"
+            },
+            "file_path" : {
+              "type" : "custom",
+              "tokenizer" : "path_hierarchy"
+            },
+            "german" : {
+              "type" : "custom",
+              "filter" : [ "lowercase", "asciifolding", "german_stop", "german_normalization", "german_stemmer" ],
+              "tokenizer" : "standard"
+            },
+            "ofj_analyzer" : {
+              "tokenizer" : "ofj_tokenizer"
+            },
+            "french" : {
+              "type" : "custom",
+              "filter" : [ "french_elision", "lowercase", "asciifolding", "french_stop", "french_stemmer" ],
+              "tokenizer" : "standard"
+            },
+            "english" : {
+              "type" : "custom",
+              "filter" : [ "english_possessive_stemmer", "lowercase", "english_stop", "english_stemmer" ],
+              "tokenizer" : "standard"
+            },
+            "case_insensitive_keyword" : {
+              "filter" : [ "lowercase" ],
+              "tokenizer" : "keyword"
+            }
+          },
+          "tokenizer" : {
+            "ofj_tokenizer" : {
+              "pattern" : ",",
+              "type" : "pattern"
+            }
+          }
+        },
+        "number_of_shards" : "4",
+        "version" : {
+          "created" : "1070299"
+        }
+      }
+    },
+    "warmers" : { }
+  }
+}

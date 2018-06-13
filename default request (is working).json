@@ -1,0 +1,185 @@
+default request (is working)
+
+{
+"from" : 0,
+"size" : 6,
+"query" : {
+"filtered" : {
+"query" : {
+"bool" : {
+"must" : [ {
+"bool" : {
+"should" : [ {
+"bool" : {
+"should" : [ {
+"query_string" : {
+"query" : "",
+"fields" : [ "title_", "title_en^5.0" ]
+}
+}, {
+"query_string" : {
+"query" : "",
+"fields" : [ "title" ]
+}
+} ],
+"boost" : 3.0
+}
+}, {
+"bool" : {
+"should" : [ {
+"query_string" : {
+"query" : "",
+"fields" : [ "decision_content_", "decision_content_en^5.0" ]
+}
+}, {
+"query_string" : {
+"query" : "",
+"fields" : [ "decision_content" ]
+}
+} ]
+}
+} ]
+}
+}, {
+"bool" : { }
+} ]
+}
+},
+"filter" : {
+"type" : {
+"value" : "decision"
+}
+}
+}
+},
+"post_filter" : {
+"and" : {
+"filters" : [ {
+"terms" : {
+"lang" : [ "en" ]
+}
+}, {
+"or" : {
+"filters" : [ {
+"type" : {
+"value" : "section"
+}
+}, {
+"type" : {
+"value" : "decision"
+}
+}, {
+"type" : {
+"value" : "annotation"
+}
+} ]
+}
+} ]
+}
+},
+"aggregations" : {
+"unfiltered" : {
+"filter" : {
+"match_all" : { }
+},
+"aggregations" : {
+"by_language" : {
+"terms" : {
+"field" : "lang",
+"size" : 0
+}
+},
+"by_content_type" : {
+"filters" : {
+"filters" : {
+"annotations" : {
+"type" : {
+"value" : "annotation"
+}
+},
+"books" : {
+"type" : {
+"value" : "section"
+}
+},
+"indexName" : {
+"type" : {
+"value" : "decision"
+}
+}
+}
+}
+},
+"by_book" : {
+"filter" : {
+"type" : {
+"value" : "section"
+}
+},
+"aggregations" : {
+"by_book_type" : {
+"terms" : {
+"field" : "type",
+"size" : 0
+}
+}
+}
+},
+"by_indexName" : {
+"filter" : {
+"type" : {
+"value" : "decision"
+}
+},
+"aggregations" : {
+"by_indexName_csn1" : {
+"terms" : {
+"field" : "case_number_structured.csn1",
+"size" : 0
+}
+}
+}
+}
+}
+},
+"filtered" : {
+"filter" : {
+"and" : {
+"filters" : [ {
+"terms" : {
+"lang" : [ "en" ]
+}
+}, {
+"or" : {
+"filters" : [ {
+"type" : {
+"value" : "section"
+}
+}, {
+"type" : {
+"value" : "decision"
+}
+}, {
+"type" : {
+"value" : "annotation"
+}
+} ]
+}
+} ]
+}
+},
+"aggregations" : {
+//related to agregation
+}
+}
+},
+"highlight" : {
+// related to highlighting
+}
+}
+
+
+
+
+
+
